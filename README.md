@@ -1,85 +1,123 @@
-# 💊 Smart Medicine Dispenser — IoT & Cloud Healthcare Ecosystem
+# 💊 Smart Medicine Dispenser
 
-[![Author](https://img.shields.io/badge/Author-Shivraj%20Deshmukh-blue.svg)](https://github.com/sadmsd707)
-[![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-ESP32%20%7C%20Flutter%20%7C%20Firebase-green.svg)](#)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-success.svg)](#)
+> **Automated IoT & Cloud Healthcare Ecosystem for Scheduled Medication Dispensation, Real-Time Adherence Tracking & Caregiver Alerts**
 
-> An automated, cloud-connected medical adherence ecosystem designed and developed by **Shivraj Deshmukh**. Built with ESP32 edge microcontroller hardware, real-time Google Firebase infrastructure, and a native Flutter Android application.
+[![ESP32](https://img.shields.io/badge/ESP32-Espressif-E7352C?style=flat-square&logo=espressif&logoColor=white)](https://www.espressif.com/)
+[![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=flat-square&logo=flutter&logoColor=white)](https://flutter.dev/)
+[![Firebase](https://img.shields.io/badge/Firebase-Firestore%20%26%20Functions-FFCA28?style=flat-square&logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-20-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![C++](https://img.shields.io/badge/C++-Embedded-00599C?style=flat-square&logo=cplusplus&logoColor=white)](https://isocpp.org/)
+[![Arduino](https://img.shields.io/badge/Arduino-Framework-00979D?style=flat-square&logo=arduino&logoColor=white)](https://www.arduino.cc/)
 
----
-
-## 📖 Overview
-
-The **Smart Medicine Dispenser** is an automated, tamper-resilient healthcare system engineered to eliminate missed dosages, ensure punctual medication dispensing, and keep caregivers actively notified anywhere in the world in real-time.
-
-### System Components
-1. **ESP32 Edge Microcontroller Hardware**: 4 motorized compartments (Servos A–D), HC-SR04 ultrasonic hand-wave proximity sensor, DS3231 RTC clock for offline reliability, 0.96" SSD1306 OLED display, and audio/visual alarms.
-2. **Native Android Flutter Application**: Real-time 0-second synchronization with Cloud Firestore, bilingual support (**English** & **मराठी - Marathi**), caregiver adherence dashboard, schedule manager, and accessible one-tap dose confirmation.
-3. **Google Firebase Cloud Infrastructure**: Cloud Firestore NoSQL Database, Cloud Functions v2 HTTPS REST API, 1-minute automated scheduled adherence watchers, and Firebase Cloud Messaging (FCM v1) high-priority push notifications.
+**Smart Medicine Dispenser** is a modern, high-performance IoT and cloud-connected healthcare solution engineered for patients, caregivers, and medical assistants to ensure punctual, tamper-resilient medication adherence. It combines ESP32 edge microcontroller hardware with servo-driven multi-compartment dispensing, offline precision real-time clock synchronization, non-contact ultrasonic hand detection, and an instant zero-latency Flutter Android mobile app backed by Google Cloud Firestore and Cloud Functions.
 
 ---
 
-## 🏗️ System Architecture
+## ✨ Features
 
+- **🎯 Multi-Compartment Motorized Dispensing**:
+  - 4 independently controlled compartments (Slots A, B, C, D) actuated by SG90 micro-servos.
+  - Dedicated active indicator LEDs for each compartment to visually guide seniors and patients.
+  - Non-volatile storage (ESP32 NVS Flash) caches dosage schedules for 100% offline autonomy.
+- **⏱️ Precision Offline RTC Synchronization**:
+  - Integrated DS3231 I2C Real-Time Clock with coin battery backup maintains millisecond-accurate scheduling without internet dependency.
+  - Automatic time synchronization and drift correction whenever Wi-Fi is available.
+- **📡 Touchless Proximity Dispensing**:
+  - Non-contact HC-SR04 ultrasonic sensor dispenses medication when a hand is waved within 10 cm.
+  - Integrated 0.96" SSD1306 OLED display provides visual cues, slot labels, and animated feedback.
+  - Audible chime alarm using an active buzzer with distinctive tones for due medicines and warnings.
+- **📱 Native Flutter Mobile Application**:
+  - Real-time 0-second bidirectional sync using Cloud Firestore reactive snapshot streams (`.snapshots()`).
+  - Bilingual UI with one-tap toggle between **English** and **मराठी (Marathi)** for elderly convenience.
+  - Prominent high-contrast "I Took This Medicine" confirmation button for senior accessibility.
+  - Comprehensive Caregiver Dashboard with adherence tracking, slot configuration, and dose history.
+- **☁️ Cloud Adherence & Notification Engine**:
+  - Firebase Cloud Functions v2 REST API for authenticated edge and mobile communication.
+  - 1-minute automated scheduled watcher (`scheduledDoseWatcher`) monitoring adherence and device heartbeats.
+  - High-priority Heads-Up Android alerts dispatched via Firebase Cloud Messaging (FCM v1).
+- **⚖️ Strict Medical Truthfulness Architecture**:
+  - Hardware separation: Hand wave & servo movement logs `servo_dispatched` (Dispensed state), **not** "Taken".
+  - Adherence is strictly confirmed only when the patient explicitly acknowledges consumption in the app.
+  - Unconfirmed doses transition to "Missed Confirmation" after a configurable grace period (default 15 mins).
+
+---
+
+## 🛠️ Tech Stack
+
+### Embedded Hardware & Firmware
+- **Microcontroller**: ESP32-WROOM-32 (Dual Core 240MHz, Wi-Fi & BLE)
+- **Language & Framework**: C++ / Arduino Core for ESP32
+- **Sensors & Actuators**: HC-SR04 Ultrasonic Sensor, DS3231 I2C RTC, 4x SG90 Micro Servos, Active Buzzer
+- **Display**: 0.96" I2C SSD1306 Monochrome OLED (128x64)
+- **Key Libraries**: `ESP32Servo`, `RTClib`, `Adafruit_SSD1306`, `Adafruit_GFX`, `ArduinoJson`
+
+### Mobile Application
+- **Framework**: [Flutter](https://flutter.dev/) (Dart 3.x)
+- **State Management**: [Provider](https://pub.dev/packages/provider)
+- **Cloud Backend SDK**: [Cloud Firestore](https://pub.dev/packages/cloud_firestore) & [Firebase Core](https://pub.dev/packages/firebase_core)
+- **Push Notifications**: [Firebase Cloud Messaging (FCM)](https://pub.dev/packages/firebase_messaging) & [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications)
+- **Local Persistence**: `shared_preferences` & offline caching
+
+### Cloud Infrastructure & Backend
+- **Cloud Provider**: Google Cloud / Firebase (Blaze / Spark)
+- **Database**: Cloud Firestore (NoSQL Native Document Store)
+- **Serverless Compute**: Firebase Cloud Functions v2 (Node.js 20 runtime)
+- **API Framework**: Express 4 with CORS & Token Authorization
+- **Scheduled Tasks**: Cloud Scheduler (1-minute adherence & offline cron job)
+- **Push Delivery**: Firebase Admin SDK (FCM v1 HTTP/v1 API)
+
+### Standalone Local Backend (Alternative)
+- **Server**: Node.js & Express 4
+- **Real-time Stream**: Server-Sent Events (SSE)
+- **Data Persistence**: File-backed JSON store (`backend/dispenser_state.json`)
+
+---
+
+## 📁 Project Structure
+
+```text
+Medicine Dispensor/
+├── firmware/
+│   └── esp32_dispenser.ino     # Complete ESP32 C++ firmware (Wi-Fi, RTC, Servos, OLED, API)
+├── flutter_app/                # Production Flutter Android mobile application
+│   ├── android/                # Android native project configuration & gradle scripts
+│   │   └── app/
+│   │       ├── build.gradle.kts
+│   │       └── google-services.json.example # Firebase configuration template
+│   ├── lib/
+│   │   ├── localization/
+│   │   │   └── app_strings.dart       # English & Marathi (मराठी) bilingual localization
+│   │   ├── models/                    # Data models (MedicineSlot, DoseRecord, Alert)
+│   │   ├── providers/                 # DispenserProvider state management
+│   │   ├── screens/                   # Patient Home, Caregiver Dashboard, Pairing, Slot Editor
+│   │   ├── services/                  # FirestoreService, ApiService, StorageService
+│   │   ├── widgets/                   # SlotCard, StatusHeader, ConfirmationBanner
+│   │   ├── firebase_options.dart      # FlutterFire client configuration
+│   │   └── main.dart                  # Mobile application entry point
+│   └── pubspec.yaml            # Flutter dependencies and assets
+├── functions/                  # Firebase Cloud Functions v2 backend
+│   ├── index.js                # Express REST API, Scheduled Watcher & FCM Push Engine
+│   ├── migrate.js              # Firestore database seeder & migration script
+│   └── package.json            # Cloud Functions Node.js dependencies
+├── backend/                    # Standalone Node.js Express server (Local Network alternative)
+│   ├── dispenser_state.json    # Local state store & seed records
+│   ├── render.yaml             # Render cloud deployment configuration
+│   ├── server.js               # Express API with SSE events & schedule manager
+│   └── package.json
+├── src/                        # Shared web components & React dashboard
+│   ├── components/             # CompartmentCard, AdherenceView, Header, Modals
+│   ├── context/                # DispenserContext state provider
+│   └── types/                  # TypeScript interface definitions
+├── .gitignore                  # Git ignore rules for keys, secrets, and binaries
+├── firebase.json               # Firebase deployment configuration
+├── firestore.indexes.json      # Firestore composite indexes
+├── firestore.rules             # Firestore security rules
+├── LICENSE                     # Proprietary software license
+├── package.json                # Root package configuration
+├── README.md                   # Project documentation
+└── tsconfig.json               # TypeScript compiler configuration
 ```
-┌────────────────────────────────────────────────────────┐
-│              ESP32 Edge Hardware Unit                  │
-│  - DS3231 I2C Real-Time Clock (Offline Precision)      │
-│  - 4x Motorized Slots (SG90 Servos A, B, C, D)         │
-│  - HC-SR04 Ultrasonic Hand Proximity Sensor           │
-│  - 0.96" SSD1306 OLED Display (128x64)                 │
-│  - NVS Flash Non-Volatile Memory (Offline Schedule)    │
-└───────────────────────────┬────────────────────────────┘
-                            │ HTTPS + Bearer Token Auth
-                            ▼
-┌────────────────────────────────────────────────────────┐
-│             Firebase Cloud Infrastructure              │
-│                                                        │
-│  ┌────────────────────────┐   ┌─────────────────────┐  │
-│  │   Cloud Functions API  │   │ Scheduled Watcher   │  │
-│  │ - /api/device/pair     │   │ - 1-Minute Cron Job │  │
-│  │ - /api/device/:id/sched│   │ - 15m Grace Watcher │  │
-│  │ - /api/device/:id/event│   │ - Offline Detector  │  │
-│  │ - /api/confirm-dose    │   └──────────┬──────────┘  │
-│  └───────────┬────────────┘              │             │
-│              ▼                           ▼             │
-│  ┌──────────────────────────────────────────────────┐  │
-│  │               Cloud Firestore DB                 │  │
-│  │ - devices/{id}                                   │  │
-│  │   ├─ slots/ (Schedules, Names, Quantities)       │  │
-│  │   ├─ doses/ (Tamper-proof 6-State Audit Trail)   │  │
-│  │   ├─ events/ (Idempotent Hardware Event Log)     │  │
-│  │   └─ alerts/ (Instant Caregiver Dispatches)      │  │
-│  └───────────────────────────┬──────────────────────┘  │
-│                              │                         │
-│  ┌───────────────────────────▼──────────────────────┐  │
-│  │          Firebase Cloud Messaging (FCM v1)       │  │
-│  │ - Heads-Up High-Priority Alert Broadcast         │  │
-│  └───────────────────────────┬──────────────────────┘  │
-└──────────────────────────────┼─────────────────────────┘
-                               │ Real-Time Firestore Snapshots & FCM
-                               ▼
-┌────────────────────────────────────────────────────────┐
-│              Flutter Android Native App                │
-│ - Instant 0-second live sync with Firestore            │
-│ - English & Marathi (मराठी) one-tap language switcher  │
-│ - 4 Configurable medicine slot cards & schedules       │
-│ - Accessible "I Took This Medicine" confirmation       │
-│ - Caregiver real-time adherence analytics & history    │
-└────────────────────────────────────────────────────────┘
-```
-
----
-
-## ⚖️ The Strict Truthfulness Rule
-
-> [!IMPORTANT]
-> **Truthfulness Rule**: The HC-SR04 ultrasonic sensor detects hand proximity near the dispenser nozzle; **it does not prove that a pill was dispensed or swallowed**. 
-> - **Never infer "Taken" from sensor or servo movement.**
-> - When the patient waves their hand, the dispenser actuates the servo, logs `servo_dispatched`, and transitions the dose state to **"Dispensed (Hand Detected)"**.
-> - Adherence is confirmed **ONLY** when the patient explicitly taps **"I took this medicine" ("मी औषध घेतले")** in the app.
-> - If no confirmation is recorded within the configured grace period (default: 15 minutes), the Firebase Scheduled Function flags the dose as **"Missed confirmation" / "Not confirmed"**, never a medically verified "Not taken".
 
 ---
 
@@ -87,8 +125,8 @@ The **Smart Medicine Dispenser** is an automated, tamper-resilient healthcare sy
 
 | Component | Pin Function | ESP32 GPIO | Description |
 |---|---|---|---|
-| **OLED (SSD1306) & RTC** | SDA | `GPIO 21` | I2C Data bus (shared) |
-| **OLED (SSD1306) & RTC** | SCL | `GPIO 22` | I2C Clock bus (shared) |
+| **OLED (SSD1306) & RTC** | SDA | `GPIO 21` | I2C Data bus (shared between OLED and DS3231) |
+| **OLED (SSD1306) & RTC** | SCL | `GPIO 22` | I2C Clock bus (shared between OLED and DS3231) |
 | **Servo Slot A** | PWM Signal | `GPIO 16` | Motorized Dispenser Slot A |
 | **Servo Slot B** | PWM Signal | `GPIO 17` | Motorized Dispenser Slot B |
 | **Servo Slot C** | PWM Signal | `GPIO 18` | Motorized Dispenser Slot C |
@@ -103,92 +141,113 @@ The **Smart Medicine Dispenser** is an automated, tamper-resilient healthcare sy
 
 ---
 
-## 📡 ESP32 Firmware Setup ([`firmware/esp32_dispenser.ino`](firmware/esp32_dispenser.ino))
+## 🚀 Getting Started
 
-### 1. Flash to ESP32
-1. Open [`firmware/esp32_dispenser.ino`](firmware/esp32_dispenser.ino) in Arduino IDE.
-2. Install required libraries via Library Manager:
-   - `ArduinoJson` (v6 or v7)
-   - `RTClib` (by Adafruit)
-   - `Adafruit SSD1306` & `Adafruit GFX Library`
-   - `ESP32Servo`
-3. Configure your local Wi-Fi SSID, Wi-Fi password, and Firebase Project details in the configuration section.
-4. Select board: **ESP32 Dev Module** and flash via USB.
+### Prerequisites
 
-### 2. Captive Portal Wi-Fi Provisioning
-1. Power up the ESP32. If not yet connected to Wi-Fi, it automatically creates a setup hotspot:
-   - **SSID:** `SmartDispenser-Setup`
-2. Connect using any smartphone. A captive portal page appears automatically (or browse to `http://192.168.4.1`).
-3. Select your local Wi-Fi, enter password, and save.
-4. Settings are permanently preserved in **ESP32 NVS Flash** memory across power cycles.
+- [Arduino IDE](https://www.arduino.cc/en/software) with **ESP32 Board Support** installed
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (version **3.22.x** or higher)
+- [Node.js](https://nodejs.org/) (version **20.x** recommended)
+- [Firebase CLI](https://firebase.google.com/docs/cli) (`npm install -g firebase-tools`)
 
 ---
 
-## 📱 Flutter Android Application ([`flutter_app/`](flutter_app/))
+### Installation & Setup
 
-### Features
-- **Zero-Latency Real-Time Sync**: Uses Firestore streams (`.snapshots()`) for immediate UI updates without polling.
-- **Bilingual Interface**: Built-in instant toggle between **English** and **मराठी (Marathi)** for senior accessibility.
-- **Offline Mode**: Local caching with `shared_preferences` and SQLite persistence so the app operates smoothly even during connectivity loss.
+#### 1. Hardware Firmware Setup
+1. Open [`firmware/esp32_dispenser.ino`](firmware/esp32_dispenser.ino) in Arduino IDE.
+2. Install required Arduino libraries:
+   - `ArduinoJson`
+   - `RTClib`
+   - `Adafruit SSD1306` & `Adafruit GFX Library`
+   - `ESP32Servo`
+3. Set your Wi-Fi credentials and Firebase endpoint in the configuration section:
+   ```cpp
+   const char* WIFI_NAME     = "YOUR_WIFI_SSID";
+   const char* WIFI_PASSWORD = "YOUR_WIFI_PASSWORD";
+   const char* FIREBASE_API_KEY = "YOUR_FIREBASE_API_KEY";
+   ```
+4. Connect your ESP32 board via USB, select **ESP32 Dev Module**, and click **Upload**.
 
-### Setup & Local Build
-1. Copy the example configuration template:
+#### 2. Captive Portal Wi-Fi Provisioning (Optional)
+If Wi-Fi credentials are not hardcoded:
+1. Power up the ESP32. It will automatically broadcast a setup hotspot named **`SmartDispenser-Setup`**.
+2. Connect from any mobile phone or PC and open `http://192.168.4.1`.
+3. Select your local home Wi-Fi network, enter password, and submit. The credentials are permanently stored in ESP32 NVS Flash memory.
+
+#### 3. Firebase Cloud Deployment
+1. Log in to Firebase CLI:
+   ```bash
+   firebase login
+   ```
+2. Select your Firebase project:
+   ```bash
+   firebase use your-project-id
+   ```
+3. Deploy Firestore rules and indexes:
+   ```bash
+   firebase deploy --only firestore
+   ```
+4. Deploy Cloud Functions (REST API & Scheduled Watcher):
+   ```bash
+   firebase deploy --only functions
+   ```
+
+#### 4. Flutter Mobile App Configuration & Build
+1. Set up the Android configuration:
    ```bash
    cp flutter_app/android/app/google-services.json.example flutter_app/android/app/google-services.json
    ```
-2. Insert your Firebase credentials into `google-services.json`.
-3. Build the application:
-   ```powershell
+2. Open `flutter_app/android/app/google-services.json` and insert your Firebase project details.
+3. Install dependencies and compile the APK:
+   ```bash
    cd flutter_app
    flutter pub get
    flutter build apk --release
    ```
+   The compiled APK will be located at `flutter_app/build/app/outputs/flutter-apk/app-release.apk`.
 
 ---
 
-## ☁️ Firebase Cloud Infrastructure ([`functions/`](functions/))
+## 💻 Running the Application
 
-### Services Used
-- **Cloud Firestore**: Real-time NoSQL store with granular security rules ([`firestore.rules`](firestore.rules)).
-- **Cloud Functions v2**: Express REST API endpoint for secure ESP32 and mobile client interaction.
-- **Scheduled Watcher**: Automated 1-minute cron task that enforces grace periods and flags unconfirmed dosages.
-- **Firebase Cloud Messaging (FCM v1)**: Multicast push notifications to registered caregiver device tokens.
-
-### Deployment Commands
-```powershell
-# 1. Login to Firebase CLI
-firebase login
-
-# 2. Select target project
-firebase use your-firebase-project-id
-
-# 3. Deploy Firestore Rules and Indexes
-firebase deploy --only firestore
-
-# 4. Deploy Cloud Functions
-firebase deploy --only functions
-```
-
----
-
-## 💻 Standalone Node.js Backend Alternative ([`backend/`](backend/))
-
-For deployments preferring a private on-premise or local network server:
-```powershell
+### 1. Start the Standalone Local Backend (Optional)
+If running without Firebase:
+```bash
 cd backend
 npm install
 npm start
 ```
-Runs an Express REST server on port `3000` with SSE real-time events, schedule persistence, and caregiver notifications.
+The server will start on `http://localhost:3000` (or `PORT=3000`), serving REST endpoints and SSE real-time event broadcasts.
+
+### 2. Device Operation Workflow
+1. **Scheduled Alarm**: At scheduled medication time, the ESP32 sounds the buzzer, flashes the designated slot LED, and displays the medicine name on the OLED screen.
+2. **Touchless Dispense**: The patient waves their hand over the ultrasonic sensor (< 10 cm). The servo opens the compartment and reports `servo_dispatched` to the cloud.
+3. **App Confirmation**: The patient taps **"I Took This Medicine"** in the Flutter app to confirm adherence.
+4. **Caregiver Notification**: If no confirmation is logged within 15 minutes, the Cloud Function flags the dose as missed and dispatches an urgent push notification to caregivers.
 
 ---
 
-## 📄 License & Copyright
+## 📡 API Reference Overview
 
-**Copyright © 2026 Shivraj Deshmukh. All Rights Reserved.**
+The Cloud Functions and backend expose the following REST API endpoints:
 
-This software, firmware, schematics, and mobile application are the proprietary intellectual property of **Shivraj Deshmukh**.
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/health` | Healthcheck and server status |
+| `POST` | `/device/pair` | Secure device pairing with authentication token issuance |
+| `GET` | `/device/:id` | Retrieve dispenser telemetry, battery, and online status |
+| `GET` | `/device/:id/schedule` | Retrieve complete 4-slot medicine schedules |
+| `PUT` | `/device/:id/schedule` | Update slot timing, dosage description, and pill count |
+| `GET` | `/esp32/schedule` | Lightweight compact schedule payload for microcontroller sync |
+| `POST` | `/device/:id/events` | Ingest hardware events (`reminder_started`, `hand_detected`, `servo_dispatched`) |
+| `POST` | `/confirm-dose` | Explicit patient adherence confirmation from mobile app |
+| `GET` | `/device/:id/doses` | Retrieve daily dose audit trail and adherence history |
+| `POST` | `/device/:id/fcm-token` | Register or update caregiver Firebase Cloud Messaging push token |
 
-All rights are reserved. No part of this project may be copied, modified, distributed, reverse-engineered, or used for commercial purposes without prior express written permission from the author.
+---
 
-For inquiries, contact **Shivraj Deshmukh** via GitHub: [@sadmsd707](https://github.com/sadmsd707).
+## 🔒 Copyright & Ownership
+
+Copyright © 2026 Shivraj Deshmukh. All Rights Reserved.  
+This project is proprietary software developed by Shivraj Deshmukh. Unauthorized copying, distribution, or commercial use is strictly prohibited.
