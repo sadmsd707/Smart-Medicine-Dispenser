@@ -22,19 +22,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCM3sa7mLFmUS9kYxQkbSP5DmD4PR13m0I',
-    appId: '1:981799332890:android:fc74c47a633a04021d35a3',
-    messagingSenderId: '981799332890',
-    projectId: 'esp32-a5cbe',
-    authDomain: 'esp32-a5cbe.firebaseapp.com',
-    storageBucket: 'esp32-a5cbe.firebasestorage.app',
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    appId: 'YOUR_FIREBASE_WEB_APP_ID',
+    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_PROJECT_ID',
+    authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
+    storageBucket: 'YOUR_PROJECT_ID.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCM3sa7mLFmUS9kYxQkbSP5DmD4PR13m0I',
-    appId: '1:981799332890:android:fc74c47a633a04021d35a3',
-    messagingSenderId: '981799332890',
-    projectId: 'esp32-a5cbe',
-    storageBucket: 'esp32-a5cbe.firebasestorage.app',
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    appId: 'YOUR_FIREBASE_ANDROID_APP_ID',
+    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+    projectId: 'YOUR_PROJECT_ID',
+    storageBucket: 'YOUR_PROJECT_ID.firebasestorage.app',
   );
 }

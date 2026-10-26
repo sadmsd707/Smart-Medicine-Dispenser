@@ -1,12 +1,43 @@
+# Dependencies
 node_modules/
 .expo/
 dist/
+web-build/
 npm-debug.*
+
+# Compiled Binaries & Large Build Outputs
+*.apk
+*.aab
+*.app
+build/
+android/app/build/
+flutter_app/build/
+
+# Keys, Keystores & Certificates (Secrets)
 *.jks
+*.keystore
 *.p8
 *.p12
 *.key
 *.mobileprovision
-*.orig.*
-web-build/
+*.pem
+*.crt
+key.properties
+flutter_app/android/key.properties
+
+# Environment & Secret files
 .env*
+*.env
+*.env.local
+
+# Firebase & Cloud Credentials
+google-services.json
+flutter_app/android/app/google-services.json
+
+# IDE / OS Caches
+.DS_Store
+Thumbs.db
+*.orig.*
+.idea/
+.vscode/
+*.iml

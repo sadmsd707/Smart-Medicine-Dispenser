@@ -136,9 +136,15 @@ The system combines:
 - **Offline Mode**: Local caching with `shared_preferences` and SQLite persistence so the app operates smoothly even during connectivity loss.
 - **Direct APK Distribution**: Pre-compiled release APK ready for immediate installation.
 
-### Installation
-- **Pre-built APK**: [`SmartMedicineDispenser-Release.apk`](SmartMedicineDispenser-Release.apk) (~49.3 MB, signed with production key).
-- Transfer the APK to any Android smartphone (Android 8.0+) and install.
+### Installation & Configuration
+- **Firebase Configuration**: Copy `flutter_app/android/app/google-services.json.example` to `google-services.json` and add your Firebase credentials.
+- **Build APK Locally**:
+  ```powershell
+  cd flutter_app
+  flutter pub get
+  flutter build apk --release
+  ```
+- **Releases**: Pre-built production APK binaries can be downloaded from the GitHub Releases tab.
 
 ---
 

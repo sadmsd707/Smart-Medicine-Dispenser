@@ -31,14 +31,14 @@
 
 // ══════════════════════════════════════════════════════
 // ★  CONFIGURATION
-// ══════════════════════════════════════════════════════
-const char* WIFI_NAME     = "Shivraj's V40";
-const char* WIFI_PASSWORD = "Soham@1107";
+// Configure your Wi-Fi credentials and Firebase settings here:
+const char* WIFI_NAME     = "YOUR_WIFI_SSID";
+const char* WIFI_PASSWORD = "YOUR_WIFI_PASSWORD";
 
-const char* FIREBASE_API_KEY = "AIzaSyCM3sa7mLFmUS9kYxQkbSP5DmD4PR13m0I";
+const char* FIREBASE_API_KEY = "YOUR_FIREBASE_API_KEY";
 const char* DEVICE_ID        = "ESP32_DISPENSER_SHIVRAJ_01";
 
-#define FS_BASE "https://firestore.googleapis.com/v1/projects/esp32-a5cbe/databases/(default)/documents"
+#define FS_BASE "https://firestore.googleapis.com/v1/projects/YOUR_FIREBASE_PROJECT_ID/databases/(default)/documents"
 
 // ══════════════════════════════════════════════════════
 // PINS
