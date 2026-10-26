@@ -1,27 +1,22 @@
-# 💊 Smart Medicine Dispenser — IoT & Cloud Healthcare System
+# 💊 Smart Medicine Dispenser — IoT & Cloud Healthcare Ecosystem
 
 [![Author](https://img.shields.io/badge/Author-Shivraj%20Deshmukh-blue.svg)](https://github.com/sadmsd707)
-[![License](https://img.shields.io/badge/License-Proprietary%20%2F%20All%20Rights%20Reserved-red.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-ESP32%20%7C%20Android%20Flutter%20%7C%20Firebase-green.svg)](#)
+[![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-ESP32%20%7C%20Flutter%20%7C%20Firebase-green.svg)](#)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-success.svg)](#)
 
----
-
-### 👤 Author & Intellectual Property Notice
-- **Inventor & Developer:** **Shivraj Deshmukh**
-- **Copyright:** © 2026 Shivraj Deshmukh. All Rights Reserved.
-- **License Type:** Proprietary (Strictly **NOT MIT** and not open-source). All rights, ownership, and intellectual property belong exclusively to Shivraj Deshmukh.
+> An automated, cloud-connected medical adherence ecosystem designed and developed by **Shivraj Deshmukh**. Built with ESP32 edge microcontroller hardware, real-time Google Firebase infrastructure, and a native Flutter Android application.
 
 ---
 
 ## 📖 Overview
 
-The **Smart Medicine Dispenser** is an automated, tamper-resilient, cloud-connected medical adherence ecosystem engineered to eliminate missed dosages, ensure punctual medication dispensing, and keep caregivers actively notified anywhere in the world in real-time.
+The **Smart Medicine Dispenser** is an automated, tamper-resilient healthcare system engineered to eliminate missed dosages, ensure punctual medication dispensing, and keep caregivers actively notified anywhere in the world in real-time.
 
-The system combines:
-1. **ESP32 Edge Microcontroller Hardware**: 4 motorized compartments (Servos A–D), HC-SR04 ultrasonic hand-wave proximity sensor, DS3231 RTC clock for offline reliability, 128x64 OLED display, and audio/visual buzzers.
-2. **Native Android Flutter Mobile Application**: Real-time 0-second synchronization with Cloud Firestore, full bilingual support (**English** & **मराठी - Marathi**), caregiver adherence dashboard, schedule manager, and big-button dose confirmation.
-3. **Google Firebase Cloud Infrastructure**: Cloud Firestore Native Database, Cloud Functions v2 HTTPS REST API, 1-minute automated scheduled adherence watchers, and Firebase Cloud Messaging (FCM v1) high-priority push notifications.
+### System Components
+1. **ESP32 Edge Microcontroller Hardware**: 4 motorized compartments (Servos A–D), HC-SR04 ultrasonic hand-wave proximity sensor, DS3231 RTC clock for offline reliability, 0.96" SSD1306 OLED display, and audio/visual alarms.
+2. **Native Android Flutter Application**: Real-time 0-second synchronization with Cloud Firestore, bilingual support (**English** & **मराठी - Marathi**), caregiver adherence dashboard, schedule manager, and accessible one-tap dose confirmation.
+3. **Google Firebase Cloud Infrastructure**: Cloud Firestore NoSQL Database, Cloud Functions v2 HTTPS REST API, 1-minute automated scheduled adherence watchers, and Firebase Cloud Messaging (FCM v1) high-priority push notifications.
 
 ---
 
@@ -36,7 +31,7 @@ The system combines:
 │  - 0.96" SSD1306 OLED Display (128x64)                 │
 │  - NVS Flash Non-Volatile Memory (Offline Schedule)    │
 └───────────────────────────┬────────────────────────────┘
-                            │ HTTPS + Cryptographic Bearer Token
+                            │ HTTPS + Bearer Token Auth
                             ▼
 ┌────────────────────────────────────────────────────────┐
 │             Firebase Cloud Infrastructure              │
@@ -82,7 +77,7 @@ The system combines:
 > [!IMPORTANT]
 > **Truthfulness Rule**: The HC-SR04 ultrasonic sensor detects hand proximity near the dispenser nozzle; **it does not prove that a pill was dispensed or swallowed**. 
 > - **Never infer "Taken" from sensor or servo movement.**
-> - When the user waves their hand, the dispenser actuates the servo, logs `servo_dispatched`, and transitions the dose state to **"Dispensed (Hand Detected)"**.
+> - When the patient waves their hand, the dispenser actuates the servo, logs `servo_dispatched`, and transitions the dose state to **"Dispensed (Hand Detected)"**.
 > - Adherence is confirmed **ONLY** when the patient explicitly taps **"I took this medicine" ("मी औषध घेतले")** in the app.
 > - If no confirmation is recorded within the configured grace period (default: 15 minutes), the Firebase Scheduled Function flags the dose as **"Missed confirmation" / "Not confirmed"**, never a medically verified "Not taken".
 
@@ -117,9 +112,10 @@ The system combines:
    - `RTClib` (by Adafruit)
    - `Adafruit SSD1306` & `Adafruit GFX Library`
    - `ESP32Servo`
-3. Select board: **ESP32 Dev Module** and flash via USB.
+3. Configure your local Wi-Fi SSID, Wi-Fi password, and Firebase Project details in the configuration section.
+4. Select board: **ESP32 Dev Module** and flash via USB.
 
-### 2. Captive Portal Wi-Fi Provisioning (No Computer Required!)
+### 2. Captive Portal Wi-Fi Provisioning
 1. Power up the ESP32. If not yet connected to Wi-Fi, it automatically creates a setup hotspot:
    - **SSID:** `SmartDispenser-Setup`
 2. Connect using any smartphone. A captive portal page appears automatically (or browse to `http://192.168.4.1`).
@@ -134,17 +130,19 @@ The system combines:
 - **Zero-Latency Real-Time Sync**: Uses Firestore streams (`.snapshots()`) for immediate UI updates without polling.
 - **Bilingual Interface**: Built-in instant toggle between **English** and **मराठी (Marathi)** for senior accessibility.
 - **Offline Mode**: Local caching with `shared_preferences` and SQLite persistence so the app operates smoothly even during connectivity loss.
-- **Direct APK Distribution**: Pre-compiled release APK ready for immediate installation.
 
-### Installation & Configuration
-- **Firebase Configuration**: Copy `flutter_app/android/app/google-services.json.example` to `google-services.json` and add your Firebase credentials.
-- **Build APK Locally**:
-  ```powershell
-  cd flutter_app
-  flutter pub get
-  flutter build apk --release
-  ```
-- **Releases**: Pre-built production APK binaries can be downloaded from the GitHub Releases tab.
+### Setup & Local Build
+1. Copy the example configuration template:
+   ```bash
+   cp flutter_app/android/app/google-services.json.example flutter_app/android/app/google-services.json
+   ```
+2. Insert your Firebase credentials into `google-services.json`.
+3. Build the application:
+   ```powershell
+   cd flutter_app
+   flutter pub get
+   flutter build apk --release
+   ```
 
 ---
 
@@ -181,21 +179,16 @@ cd backend
 npm install
 npm start
 ```
-Runs an Express REST server on port `3000` with SSE real-time events, schedule persistence, and simulated caregiver push notifications.
+Runs an Express REST server on port `3000` with SSE real-time events, schedule persistence, and caregiver notifications.
 
 ---
 
-## 📄 Ownership, Copyright & Legal License
+## 📄 License & Copyright
 
-```
-Copyright (c) 2026 Shivraj Deshmukh. All Rights Reserved.
-```
+**Copyright © 2026 Shivraj Deshmukh. All Rights Reserved.**
 
-### Intellectual Property & Non-MIT Notice
-- **Original Author & Creator:** **Shivraj Deshmukh**
-- **License Classification:** **Proprietary — All Rights Reserved**
-- **Strict Notice:** This software, firmware, and application were conceived, architected, and built by **Shivraj Deshmukh**. 
-- **THIS IS NOT AN OPEN-SOURCE MIT-LICENSED PROJECT.**
-- No individual or organization is permitted to duplicate, distribute, modify, reverse engineer, or commercially exploit this software or hardware design without explicit prior written authorization from **Shivraj Deshmukh**.
+This software, firmware, schematics, and mobile application are the proprietary intellectual property of **Shivraj Deshmukh**.
 
-For licensing inquiries or permissions, contact **Shivraj Deshmukh** via GitHub: [@sadmsd707](https://github.com/sadmsd707).
+All rights are reserved. No part of this project may be copied, modified, distributed, reverse-engineered, or used for commercial purposes without prior express written permission from the author.
+
+For inquiries, contact **Shivraj Deshmukh** via GitHub: [@sadmsd707](https://github.com/sadmsd707).
