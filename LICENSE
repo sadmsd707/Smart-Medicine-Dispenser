@@ -1,0 +1,28 @@
+Copyright (c) 2026 Shivraj Deshmukh. All Rights Reserved.
+
+PROPRIETARY SOURCE CODE LICENSE & INTELLECTUAL PROPERTY NOTICE
+
+This software and all associated documentation files (the "Software"), including without
+limitation all source code, ESP32 firmware, Flutter mobile application code, Cloud Firestore
+rules, Firebase Cloud Functions, backend services, hardware schematics, algorithms, UI/UX designs,
+and assets, are the exclusive intellectual property of Shivraj Deshmukh.
+
+ALL RIGHTS RESERVED. 
+THIS APPLICATION IS NOT LICENSED UNDER THE MIT LICENSE OR ANY OTHER OPEN SOURCE LICENSE.
+
+Strictly Prohibited:
+1. No permission is granted to any person or entity to use, copy, modify, merge, publish,
+   distribute, sublicense, reproduce, publicly display, or sell copies or derivatives of the
+   Software, in whole or in part, without the prior express written consent of Shivraj Deshmukh.
+2. Reverse engineering, decompiling, or disassembling any part of this software, including
+   compiled firmware binaries and Android application packages (APK), is strictly prohibited.
+3. Commercial use, redistribution, or white-labeling of this software or its embedded logic
+   is strictly prohibited without a separate commercial licensing agreement executed by Shivraj Deshmukh.
+
+DISCLAIMER:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER
+(SHIVRAJ DESHMUKH) BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN
+ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

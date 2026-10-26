@@ -1,0 +1,340 @@
+{
+  "pairedDevice": {
+    "deviceId": "ESP32_DISPENSER_SHIVRAJ_01",
+    "pairingCode": "DISP-9842",
+    "name": "Shivraj's Smart Dispenser (4-Slot)",
+    "isOnline": false,
+    "lastSeen": 1792898163162,
+    "firmwareVersion": "v2.5.0-esp32-rtc",
+    "wifiRssi": -58,
+    "batteryPercent": 96,
+    "timezone": "Asia/Kolkata",
+    "lastSyncTimestamp": 1792897315077,
+    "gracePeriodMinutes": 15
+  },
+  "patient": {
+    "id": "PATIENT_01",
+    "name": "Shivraj Deshmukh",
+    "age": 68,
+    "preferredLanguage": "mr",
+    "emergencyPhone": "+91 98220 12345"
+  },
+  "caregivers": [
+    {
+      "id": "CG_01",
+      "name": "Dr. Ramesh Deshmukh",
+      "phone": "+91 98220 12345",
+      "relation": "Primary Caregiver / Son",
+      "email": "ramesh.deshmukh@example.com",
+      "pushEnabled": true,
+      "fcmToken": "demo_fcm_token_caregiver_1"
+    }
+  ],
+  "slots": [
+    {
+      "id": "A",
+      "slotNumber": 1,
+      "medicineName": "Amoxicillin",
+      "doseText": "500 mg (1 Capsule)",
+      "enabled": true,
+      "times": [
+        "08:00",
+        "20:00"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "notes": "Take after meals with water",
+      "pillCount": 17,
+      "lowStockThreshold": 5,
+      "lastDispensed": 1792898163150
+    },
+    {
+      "id": "B",
+      "slotNumber": 2,
+      "medicineName": "Atorvastatin",
+      "doseText": "20 mg (1 Tablet)",
+      "enabled": true,
+      "times": [
+        "21:00"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "notes": "Take at bedtime",
+      "pillCount": 24,
+      "lowStockThreshold": 6,
+      "lastDispensed": null
+    },
+    {
+      "id": "C",
+      "slotNumber": 3,
+      "medicineName": "Metformin HCl",
+      "doseText": "850 mg (1 Tablet)",
+      "enabled": true,
+      "times": [
+        "13:00",
+        "19:30"
+      ],
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "notes": "Take with food to avoid gastric irritation",
+      "pillCount": 4,
+      "lowStockThreshold": 6,
+      "lastDispensed": null
+    },
+    {
+      "id": "D",
+      "slotNumber": 4,
+      "medicineName": "Vitamin D3 + Calcium",
+      "doseText": "1 Tablet",
+      "enabled": true,
+      "times": [
+        "09:30"
+      ],
+      "days": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "notes": "Take in morning",
+      "pillCount": 28,
+      "lowStockThreshold": 5,
+      "lastDispensed": null
+    }
+  ],
+  "doseRecords": [
+    {
+      "id": "dose_A_20261025_0800",
+      "slotId": "A",
+      "slotNumber": 1,
+      "medicineName": "Amoxicillin",
+      "doseText": "500 mg (1 Capsule)",
+      "date": "2026-10-25",
+      "scheduledTime": "08:00",
+      "scheduledDateTimeIso": "2026-10-25T08:00:00",
+      "status": "CONFIRMED_TAKEN",
+      "dispensedAt": null,
+      "confirmedAt": "2026-10-25T03:16:03.165Z",
+      "confirmationSource": "app_patient_confirmation",
+      "caretakerNotifiedMissed": true,
+      "caretakerNotifiedConfirmed": true,
+      "notes": "Take after meals with water"
+    },
+    {
+      "id": "dose_A_20261025_2000",
+      "slotId": "A",
+      "slotNumber": 1,
+      "medicineName": "Amoxicillin",
+      "doseText": "500 mg (1 Capsule)",
+      "date": "2026-10-25",
+      "scheduledTime": "20:00",
+      "scheduledDateTimeIso": "2026-10-25T20:00:00",
+      "status": "DISPENSED",
+      "dispensedAt": 1792898163150,
+      "confirmedAt": null,
+      "confirmationSource": null,
+      "caretakerNotifiedMissed": false,
+      "caretakerNotifiedConfirmed": false,
+      "notes": "Take after meals with water"
+    },
+    {
+      "id": "dose_B_20261025_2100",
+      "slotId": "B",
+      "slotNumber": 2,
+      "medicineName": "Atorvastatin",
+      "doseText": "20 mg (1 Tablet)",
+      "date": "2026-10-25",
+      "scheduledTime": "21:00",
+      "scheduledDateTimeIso": "2026-10-25T21:00:00",
+      "status": "UPCOMING",
+      "dispensedAt": null,
+      "confirmedAt": null,
+      "confirmationSource": null,
+      "caretakerNotifiedMissed": false,
+      "caretakerNotifiedConfirmed": false,
+      "notes": "Take at bedtime"
+    },
+    {
+      "id": "dose_C_20261025_1300",
+      "slotId": "C",
+      "slotNumber": 3,
+      "medicineName": "Metformin HCl",
+      "doseText": "850 mg (1 Tablet)",
+      "date": "2026-10-25",
+      "scheduledTime": "13:00",
+      "scheduledDateTimeIso": "2026-10-25T13:00:00",
+      "status": "MISSED_CONFIRMATION",
+      "dispensedAt": null,
+      "confirmedAt": null,
+      "confirmationSource": null,
+      "caretakerNotifiedMissed": true,
+      "caretakerNotifiedConfirmed": false,
+      "notes": "Take with food to avoid gastric irritation"
+    },
+    {
+      "id": "dose_C_20261025_1930",
+      "slotId": "C",
+      "slotNumber": 3,
+      "medicineName": "Metformin HCl",
+      "doseText": "850 mg (1 Tablet)",
+      "date": "2026-10-25",
+      "scheduledTime": "19:30",
+      "scheduledDateTimeIso": "2026-10-25T19:30:00",
+      "status": "UPCOMING",
+      "dispensedAt": null,
+      "confirmedAt": null,
+      "confirmationSource": null,
+      "caretakerNotifiedMissed": false,
+      "caretakerNotifiedConfirmed": false,
+      "notes": "Take with food to avoid gastric irritation"
+    },
+    {
+      "id": "dose_D_20261025_0930",
+      "slotId": "D",
+      "slotNumber": 4,
+      "medicineName": "Vitamin D3 + Calcium",
+      "doseText": "1 Tablet",
+      "date": "2026-10-25",
+      "scheduledTime": "09:30",
+      "scheduledDateTimeIso": "2026-10-25T09:30:00",
+      "status": "MISSED_CONFIRMATION",
+      "dispensedAt": null,
+      "confirmedAt": null,
+      "confirmationSource": null,
+      "caretakerNotifiedMissed": true,
+      "caretakerNotifiedConfirmed": false,
+      "notes": "Take in morning"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_1792914300024_i9u4f",
+      "type": "MISSED_CONFIRMATION",
+      "title": "⚠️ Unconfirmed Medicine Alert",
+      "body": "Shivraj Deshmukh has NOT confirmed taking Metformin HCl (850 mg (1 Tablet)) scheduled for 13:00. (15m grace period elapsed).",
+      "doseId": "dose_C_20261025_1300",
+      "slotId": "C",
+      "severity": "alert",
+      "timestamp": "2026-10-25T07:45:00.025Z",
+      "deliveryMode": "LOCAL_RELAY",
+      "delivered": true,
+      "recipients": [
+        {
+          "name": "Dr. Ramesh Deshmukh",
+          "phone": "+91 98220 12345"
+        }
+      ]
+    },
+    {
+      "id": "notif_1792901709963_8pf4p",
+      "type": "MISSED_CONFIRMATION",
+      "title": "⚠️ Unconfirmed Medicine Alert",
+      "body": "Shivraj Deshmukh has NOT confirmed taking Vitamin D3 + Calcium (1 Tablet) scheduled for 09:30. (15m grace period elapsed).",
+      "doseId": "dose_D_20261025_0930",
+      "slotId": "D",
+      "severity": "alert",
+      "timestamp": "2026-10-25T04:15:09.964Z",
+      "deliveryMode": "LOCAL_RELAY",
+      "delivered": true,
+      "recipients": [
+        {
+          "name": "Dr. Ramesh Deshmukh",
+          "phone": "+91 98220 12345"
+        }
+      ]
+    },
+    {
+      "id": "notif_1792898225940_0bs6e",
+      "type": "DEVICE_OFFLINE",
+      "title": "Dispenser Device Offline",
+      "body": "ESP32 Smart Dispenser has lost connection. Last seen 63s ago.",
+      "severity": "warning",
+      "timestamp": "2026-10-25T03:17:05.940Z",
+      "deliveryMode": "LOCAL_RELAY",
+      "delivered": true,
+      "recipients": [
+        {
+          "name": "Dr. Ramesh Deshmukh",
+          "phone": "+91 98220 12345"
+        }
+      ]
+    },
+    {
+      "id": "notif_1792898163178_xr30q",
+      "type": "DOSE_CONFIRMED",
+      "title": "✅ Medicine Confirmed Taken",
+      "body": "Shivraj Deshmukh confirmed taking Amoxicillin (500 mg (1 Capsule)) at 08:46 am.",
+      "doseId": "dose_A_20261025_0800",
+      "slotId": "A",
+      "severity": "success",
+      "timestamp": "2026-10-25T03:16:03.178Z",
+      "deliveryMode": "LOCAL_RELAY",
+      "delivered": true,
+      "recipients": [
+        {
+          "name": "Dr. Ramesh Deshmukh",
+          "phone": "+91 98220 12345"
+        }
+      ]
+    },
+    {
+      "id": "notif_1792897375166_7rl7r",
+      "type": "DEVICE_OFFLINE",
+      "title": "Dispenser Device Offline",
+      "body": "ESP32 Smart Dispenser has lost connection. Last seen 60s ago.",
+      "severity": "warning",
+      "timestamp": "2026-10-25T03:02:55.166Z",
+      "deliveryMode": "LOCAL_RELAY",
+      "delivered": true,
+      "recipients": [
+        {
+          "name": "Dr. Ramesh Deshmukh",
+          "phone": "+91 98220 12345"
+        }
+      ]
+    },
+    {
+      "id": "notif_1792897325114_c3sq9",
+      "type": "MISSED_CONFIRMATION",
+      "title": "⚠️ Unconfirmed Medicine Alert",
+      "body": "Shivraj Deshmukh has NOT confirmed taking Amoxicillin (500 mg (1 Capsule)) scheduled for 08:00. (15m grace period elapsed).",
+      "doseId": "dose_A_20261025_0800",
+      "slotId": "A",
+      "severity": "alert",
+      "timestamp": "2026-10-25T03:02:05.114Z",
+      "deliveryMode": "LOCAL_RELAY",
+      "delivered": true,
+      "recipients": [
+        {
+          "name": "Dr. Ramesh Deshmukh",
+          "phone": "+91 98220 12345"
+        }
+      ]
+    }
+  ],
+  "processedEventIds": [
+    "test_ev_01",
+    "test_ev_02"
+  ]
+}

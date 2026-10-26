@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981799332890",
+    "project_id": "esp32-a5cbe",
+    "storage_bucket": "esp32-a5cbe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981799332890:android:fc74c47a633a04021d35a3",
+        "android_client_info": {
+          "package_name": "com.shivraj.dispenser.flutter_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM3sa7mLFmUS9kYxQkbSP5DmD4PR13m0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

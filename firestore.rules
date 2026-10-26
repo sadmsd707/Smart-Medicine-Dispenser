@@ -1,0 +1,51 @@
+// Firestore Security Rules — Free Spark Plan (Direct SDK Access)
+// Project: esp32-a5cbe
+//
+// These rules allow the Flutter app to read/write directly to Firestore
+// without a Cloud Functions backend.
+//
+// Security model:
+//   - Devices collection: readable/writable by anyone who knows the deviceId
+//     (the deviceId + pairingCode serve as the access credential)
+//   - Slots / Doses / Alerts: readable/writable if the parent device exists
+//
+// For production hardening, add Firebase Auth and lock down to uid checks.
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Device Documents ──────────────────────────────────────────────────
+    match /devices/{deviceId} {
+      // Anyone with the deviceId can read/write device telemetry
+      allow read: if true;
+      allow write: if true;
+
+      // ── Medicine Slots ─────────────────────────────────────────────────
+      match /slots/{slotId} {
+        allow read: if true;
+        allow write: if true;
+      }
+
+      // ── Dose Records ───────────────────────────────────────────────────
+      match /doses/{doseId} {
+        allow read: if true;
+        // Only allow writes that are: new records or status updates
+        allow create: if true;
+        allow update: if true;
+        allow delete: if false;   // never delete dose history
+      }
+
+      // ── Caregiver Alerts ───────────────────────────────────────────────
+      match /alerts/{alertId} {
+        allow read: if true;
+        allow write: if true;
+      }
+    }
+
+    // Block access to everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

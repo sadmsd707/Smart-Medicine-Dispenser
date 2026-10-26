@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "SmartMed Dispenser",
+    "slug": "smartmed-dispenser",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#0d9488",
+      "resizeMode": "contain"
+    },
+    "android": {
+      "package": "com.shivrajdeshmukh.smartdispenser",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0d9488"
+      },
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "VIBRATE"
+      ]
+    },
+    "extra": {
+      "author": "Shivraj Deshmukh",
+      "license": "Proprietary",
+      "copyright": "Copyright (c) 2026 Shivraj Deshmukh. All Rights Reserved."
+    }
+  }
+}
